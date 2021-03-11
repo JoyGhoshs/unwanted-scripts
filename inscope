@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+#By-0xJoyGhosh
+import sys
+import json
+import requests
+import os
+execute=os.system
+prog=sys.argv[1]
+git_data="https://raw.githubusercontent.com/arkadiyt/bounty-targets-data/master/data/"
+last_update="https://raw.githubusercontent.com/arkadiyt/bounty-targets-data/master/README.md"
+filter="|jq -r '.[].targets.in_scope[] | [.target] | @tsv'"
+filterh="|jq -r '.[].targets.in_scope[] | [.asset_identifier] | @tsv'"
+filteri="| jq -r '.[].targets.in_scope[] | [.endpoint] | @tsv'"
+url_filter="grep -Po '((http|https):\/\/)?(([\w.-]*)\.([\w]*)\.([A-z]))\w+'"
+if prog=="hackerone":
+    execute('curl -s -L '+git_data+'hackerone_data.json'+filterh+'|'+url_filter)
+elif prog=="bugcrowd":
+    execute('curl -s -L '+git_data+'bugcrowd_data.json'+filter+'|'+url_filter)
+elif prog=="intigriti":
+    execute('curl -s -L '+git_data+'intigriti_data.json'+filteri+'|'+url_filter)
+elif prog=="yeswehack":
+    execute('curl -s -L '+git_data+'yeswehack_data.json'+filter+'|'+url_filter)
+elif prog=="federacy":
+    execute('curl -s -L '+git_data+'federacy_data.json'+filter+'|'+url_filter)
+elif prog=="hackenproof":
+    execute('curl -s -L '+git_data+'hackenproof_data.json'+filter+'|'+url_filter)
+elif prog=="help":
+    print('    Execute:-  '+sys.argv[0]+' program_name')
+    print("""
+     programs
+     ---------
+     hackerone
+     bugcrowd
+     intigriti
+     yeswehack
+     federacy
+     hackenproof
+    """)
+    execute('curl -s -L '+last_update+'|grep "The last change was detected on"')
+else:
+    print('Programme Not avilable')
