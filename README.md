@@ -30,6 +30,9 @@ except ImportError:
     print("No module named 'google' found installing it now")
     execute('pip3 install google')
 query = sys.argv[1]
-for j in search(query, tld='com', num=30, start=0, stop=None, pause=2.0): #num defines how many search pages to grub | start defines start from which page | pause defines Lapse to wait between HTTP requests
+for j in search(query, tld='com', num=30, start=0, stop=None, pause=2.0): 
     print(j) 
+    #num defines how many search pages to grub 
+    #start defines start from which page 
+    #pause defines Lapse to wait between HTTP requests
 ```
