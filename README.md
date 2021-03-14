@@ -36,3 +36,19 @@ for j in search(query, tld='com', num=30, start=0, stop=None, pause=2.0):
     #start defines start from which page 
     #pause defines Lapse to wait between HTTP requests
 ```
+
+### Use google-search To Grep Gtfo-bin Result (html2text)
+
+```bash
+python3 google-search intitle:"ftp"+site:gtfobins.github.io | xargs curl -sL| html2text
+
+#Dork: intitle:"ftp"+site:gtfobins.github.io
+```
+### Use google-search To Grep lol-bash Result (html2text)
+
+```bash
+python3 google-search intitle:"at"+site:lolbas-project.github.io | xargs curl -sL| html2text
+
+#Dork: intitle:"at"+site:lolbas-project.github.io
+```
+
