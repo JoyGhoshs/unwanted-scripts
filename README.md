@@ -124,3 +124,19 @@ book:[title]	Searches for book titles related to keywords
 maps:[location]	Searches for maps related to keywords
 linkfromdomain:[url]	Shows websites whose links are mentioned in the specified url (with errors)
 ``` 
+
+### favico hash Generator
+``` python
+import mmh3
+import requests
+import codecs
+import sys
+url=sys.argv[1]
+response = requests.get('https://'+url+'/favicon.ico')
+favicon = codecs.encode(response.content,"base64")
+hash = mmh3.hash(favicon)
+has=hash
+print("http.favicon.hash:",has)
+#USAGE : script.py domain.tld
+
+``` 
