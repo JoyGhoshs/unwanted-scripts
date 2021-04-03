@@ -140,3 +140,7 @@ print("http.favicon.hash:",has)
 #USAGE : script.py domain.tld
 
 ``` 
+### Junkdomains usage
+``` bash
+./junkdomains subdomains.txt | sort -u
+```
